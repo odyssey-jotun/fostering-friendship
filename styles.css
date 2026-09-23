@@ -314,36 +314,6 @@ p:last-child{margin-bottom:0}
   font-size:.97rem;line-height:1.65;
 }
 
-/* ── Form ─────────────────────────────────────────── */
-
-.form{
-  background:var(--white);padding:38px 38px 34px;border-radius:var(--radius);
-  border:1px solid var(--line);box-shadow:var(--shadow-lg);
-}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.field{margin-bottom:20px}
-.field label{
-  display:block;font-size:.88rem;font-weight:600;color:var(--ink);margin-bottom:7px;
-}
-.req{color:var(--orange)}
-.field input,.field textarea{
-  width:100%;font-family:var(--sans);font-size:1rem;color:var(--ink);
-  padding:13px 15px;border:1.5px solid var(--line);border-radius:10px;
-  background:#fbfdfe;transition:border-color .15s, box-shadow .15s;
-}
-.field input:focus,.field textarea:focus{
-  outline:none;border-color:var(--teal);box-shadow:0 0 0 4px rgba(126,190,197,.22);
-}
-.field textarea{resize:vertical;min-height:140px}
-.field.invalid input,.field.invalid textarea{border-color:var(--orange)}
-.counter{text-align:right;font-size:.8rem;color:#8798a1;margin:.45em 0 0}
-.err{color:var(--orange-deep);font-size:.84rem;margin:.5em 0 0;min-height:0}
-.err:empty{display:none}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.form-note{margin-top:1.2em;font-size:.92rem}
-.form-note.ok{color:var(--teal-deep);font-weight:600}
-.form-note.bad{color:var(--orange-deep)}
-
 /* ── Footer ───────────────────────────────────────── */
 
 .site-footer{background:var(--ink);color:rgba(255,255,255,.72);padding-top:64px}
@@ -413,8 +383,7 @@ p:last-child{margin-bottom:0}
   .wrap{padding-inline:18px}
   .hero-inner{padding-block:96px}
   .hero-actions .btn{width:100%;max-width:300px}
-  .form,.mission,.values,.callout,.card,.cta-band{padding-inline:22px}
-  .form{padding-block:28px}
+  .mission,.values,.callout,.card,.cta-band{padding-inline:22px}
   .cta-band{padding-block:30px}
   .study summary{padding:20px}
   .study-body{padding-inline:20px}

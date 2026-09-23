@@ -12,10 +12,10 @@ markup are new.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The one-page site: hero, get started, about, research, contact |
+| `index.html` | The one-page site: hero, get started, about, research |
 | `blog.html` | Blog listing |
 | `styles.css` | All styling |
-| `script.js` | Nav, accordion, scroll behavior, form validation |
+| `script.js` | Nav, accordion, scroll behavior |
 | `assets/` | Logo, photos, hero video, the 14-page guide PDF |
 
 Plain static HTML, CSS and JavaScript. No framework, no build step, no dependencies.
@@ -32,17 +32,12 @@ Open `index.html` or run `python3 -m http.server 8000` and go to http://localhos
 - Two generic stock images with "OUR CORE VALUES" and "WELCOME" baked into them were
   cut. The real photographs of Jackson and the volunteer team carry those sections.
 
-## Making the contact form send
+## Why there is no contact form
 
-The form validates, counts characters and has a honeypot, but nothing receives it yet.
-Make a free endpoint at [formspree.io](https://formspree.io) and paste it into the first
-line of `script.js`:
-
-    var FORM_ENDPOINT = "https://formspree.io/f/xxxxxxx";
-
-Until that is set, submitting shows a message saying the form is not connected. The
-original posted to a WordPress backend that no longer exists, and there is no contact
-email anywhere in the old site, so a mailto fallback was not possible.
+The original had one, but it posted to a WordPress backend that no longer exists and its
+reCAPTCHA key was bound to the dead domain, so it could never have worked again. There is
+also no contact email anywhere in the archived site, so there was nothing to fall back to.
+It was removed rather than left on the page as a dead end.
 
 ## Notes
 

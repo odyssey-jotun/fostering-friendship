@@ -1,7 +1,4 @@
-/* Fostering Friendships
-   Set this once and the contact form posts for real, no page reload.
-   Make a free endpoint at https://formspree.io and paste it here. */
-var FORM_ENDPOINT = "";
+/* Fostering Friendships */
 
 (function () {
   "use strict";
@@ -86,91 +83,5 @@ var FORM_ENDPOINT = "";
       if (!d.open) return;
       studies.forEach(function (o) { if (o !== d) o.open = false; });
     });
-  });
-
-  /* ── Contact form ─────────────────────────────── */
-  var form = $("#contactForm");
-  if (!form) return;
-
-  var note    = $("#formNote");
-  var counter = $("#count");
-  var message = $("#message");
-
-  if (message && counter) {
-    message.addEventListener("input", function () {
-      counter.textContent = String(message.value.length);
-    });
-  }
-
-  function setError(id, msg) {
-    var slot = $('.err[data-for="' + id + '"]');
-    var field = $("#" + id).closest(".field");
-    if (slot) slot.textContent = msg || "";
-    if (field) field.classList.toggle("invalid", Boolean(msg));
-    return !msg;
-  }
-
-  function validate() {
-    var ok = true;
-    ok = setError("first", $("#first").value.trim() ? "" : "Please enter your first name.") && ok;
-    ok = setError("last",  $("#last").value.trim()  ? "" : "Please enter your last name.")  && ok;
-    var email = $("#email").value.trim();
-    ok = setError("email", !email ? "Please enter your email address."
-                    : /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) ? "" : "That does not look like a valid email address.") && ok;
-    ok = setError("message", $("#message").value.trim() ? "" : "Please write a message.") && ok;
-    return ok;
-  }
-
-  ["first", "last", "email", "message"].forEach(function (id) {
-    var el = $("#" + id);
-    el.addEventListener("blur", validate);
-    el.addEventListener("input", function () {
-      if (el.closest(".field").classList.contains("invalid")) validate();
-    });
-  });
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    note.className = "form-note";
-    note.textContent = "";
-
-    if ($("#website").value) return;          // honeypot
-    if (!validate()) {
-      note.className = "form-note bad";
-      note.textContent = "Please fix the fields marked above.";
-      return;
-    }
-
-    if (!FORM_ENDPOINT) {
-      note.className = "form-note bad";
-      note.textContent = "This form is not connected yet. Add a Formspree endpoint to FORM_ENDPOINT at the top of script.js and it will start sending.";
-      return;
-    }
-
-    var btn = form.querySelector('button[type="submit"]');
-    var label = btn.textContent;
-    btn.disabled = true;
-    btn.textContent = "Sending…";
-
-    fetch(FORM_ENDPOINT, {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: new FormData(form)
-    })
-      .then(function (r) {
-        if (!r.ok) throw new Error("bad status " + r.status);
-        form.reset();
-        if (counter) counter.textContent = "0";
-        note.className = "form-note ok";
-        note.textContent = "Thank you. Your message has been sent.";
-      })
-      .catch(function () {
-        note.className = "form-note bad";
-        note.textContent = "Something went wrong sending that. Please try again.";
-      })
-      .finally(function () {
-        btn.disabled = false;
-        btn.textContent = label;
-      });
   });
 })();
