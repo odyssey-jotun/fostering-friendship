@@ -151,8 +151,11 @@ p:last-child{margin-bottom:0}
   transition:transform .15s, background .15s, box-shadow .15s, color .15s;
 }
 .btn:active{transform:translateY(1px)}
-.btn-primary{background:var(--orange);color:#fff;box-shadow:0 4px 16px rgba(211,88,44,.3)}
-.btn-primary:hover{background:var(--orange-deep);color:#fff;box-shadow:0 8px 24px rgba(211,88,44,.36)}
+.btn-primary{background:var(--teal-deep);color:#fff;box-shadow:0 4px 16px rgba(55,128,139,.28)}
+.btn-primary:hover{background:#2b6772;color:#fff;box-shadow:0 8px 24px rgba(55,128,139,.34)}
+/* the original reserved #d3582c for the guide download and nothing else */
+.btn-accent{background:var(--orange);color:#fff;box-shadow:0 4px 16px rgba(211,88,44,.28)}
+.btn-accent:hover{background:var(--orange-deep);color:#fff;box-shadow:0 8px 24px rgba(211,88,44,.34)}
 .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.75)}
 .btn-ghost:hover{background:#fff;color:var(--ink)}
 
@@ -205,13 +208,20 @@ p:last-child{margin-bottom:0}
 .split-reverse .split-text{order:1}
 .split-reverse .split-media{order:2}
 .split-media img{
-  width:100%;border-radius:var(--radius);box-shadow:var(--shadow-lg);object-fit:cover;
+  width:100%;height:auto;display:block;object-fit:cover;
+  border-radius:var(--radius);box-shadow:var(--shadow-lg);
 }
+/* fixed frames so a portrait source cannot run away down the page */
+.split-media.landscape img{aspect-ratio:3/2}
+.split-media.portrait img{aspect-ratio:4/5}
+.split-media.portrait{max-width:400px;margin-inline:auto}
+/* the founder shot is 2:3, so a 4:5 frame crops it; bias up to keep the face centred */
+.founder .split-media img{object-position:50% 18%}
 .split-media figcaption{
   margin-top:.9em;text-align:center;font-style:italic;
   font-family:var(--head);color:var(--ink);font-size:1.02rem;
 }
-.founder .split-media{max-width:380px;margin-inline:auto}
+.founder .split-media{max-width:340px;margin-inline:auto}
 .founder{margin-top:3.4em;align-items:start}
 
 /* ── Steps ────────────────────────────────────────── */
@@ -246,8 +256,8 @@ p:last-child{margin-bottom:0}
 .cta-band h3{color:#fff;margin-bottom:.35em}
 .cta-band p{margin:0;color:rgba(255,255,255,.93);max-width:62ch}
 .cta-band > div{flex:1 1 380px}
-.cta-band .btn-primary{background:#fff;color:var(--orange-deep);box-shadow:0 4px 18px rgba(0,0,0,.16)}
-.cta-band .btn-primary:hover{background:#fff6f2;color:var(--orange-deep)}
+.cta-band .btn-accent,.cta-band .btn-primary{background:#fff;color:var(--orange-deep);box-shadow:0 4px 18px rgba(0,0,0,.16)}
+.cta-band .btn-accent:hover,.cta-band .btn-primary:hover{background:#fff6f2;color:var(--orange-deep)}
 
 /* ── Impact ───────────────────────────────────────── */
 
