@@ -19,6 +19,11 @@
   --shadow:0 1px 2px rgba(21,39,46,.05), 0 8px 28px rgba(21,39,46,.07);
   --shadow-lg:0 2px 4px rgba(21,39,46,.06), 0 18px 50px rgba(21,39,46,.12);
   --wrap:1140px;
+  --flow-tight:.65rem;   /* heading -> the content it introduces */
+  --flow-item:1.9rem;    /* between small items */
+  --flow-block:2.4rem;   /* block -> next block */
+  --flow-sub:2.9rem;     /* above an h3 starting a subsection */
+  --flow-section:3.6rem; /* above an h2 starting a section */
   --head:"Fraunces",Georgia,"Times New Roman",serif;
   --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
@@ -73,21 +78,58 @@ h4{font-size:1.12rem;letter-spacing:-.005em}
 p{margin:0 0 1.15em}
 p:last-child{margin-bottom:0}
 
-/* space ABOVE a heading, never below it */
-* + h2{margin-top:1.7em}
-* + h3{margin-top:1.9em}
-.split-text > h3:first-child,
-.card > h3:first-child,
-.callout > h3:first-child,
-.promise > h3:first-child,
-.cta-band h3:first-child,
-.values > h3:first-child,
-.footer-inner h3{margin-top:0}
+/* ── Vertical rhythm ──────────────────────────────────────────────
+   Two halves of ONE rule. Never ship one without the other:
 
-/* an eyebrow belongs to the heading under it, so keep them locked together */
+   1. A heading hugs the content it introduces (small margin-bottom).
+   2. A heading ALWAYS has clearly more space above it than below it.
+
+   The trap: zeroing a heading's margin-top so it does not push down
+   inside a card. If the container itself has no separation, the
+   heading then sits flush against whatever block precedes it. So the
+   container owns the gap (--flow-block) and the heading zeroes out
+   only as a first child. Anything that directly follows a heading
+   hugs it (--flow-tight).
+   Check with: gap above a heading > gap below it, everywhere. */
+
+* + h2{margin-top:var(--flow-section)}
+* + h3{margin-top:var(--flow-sub)}
+* + h4{margin-top:var(--flow-item)}
+
+/* first child never pushes its own container down */
+.wrap > *:first-child,
+.split-text > *:first-child,
+.card > *:first-child,
+.callout > *:first-child,
+.promise > *:first-child,
+.values > *:first-child,
+.mission > *:first-child,
+.cta-band > div > *:first-child,
+.paper > *:first-child,
+.post > *:first-child,
+.value > *:first-child,
+.toc > *:first-child,
+.footer-inner > div > *:first-child{margin-top:0}
+
+/* a label directly above a heading belongs to it */
 .eyebrow + h1,
 .eyebrow + h2,
-.eyebrow + h3{margin-top:0}
+.eyebrow + h3,
+.role + h3,
+.paper-n + h2{margin-top:0}
+
+/* whatever directly follows a heading hugs that heading.
+   :is() keeps this at class-level specificity so it beats the
+   block-separation rule below; a plain "h2 + *" loses to ".mission". */
+h1 + *,h2 + *,h3 + *,h4 + *{margin-top:var(--flow-tight)}
+:is(h1,h2,h3,h4) + :is(.split,.mission,.values,.steps,.refs,.impact,
+.callout,.promise,.cta-band,.value-grid,.studies,.papers,.posts,
+.lead,.sub){margin-top:var(--flow-tight)}
+
+/* blocks that follow another block get real separation, so the
+   heading inside them is never flush against the block above */
+.split,.mission,.values,.steps,.refs,.impact,.callout,
+.promise,.cta-band,.value-grid,.studies,.papers,.posts{margin-top:var(--flow-block)}
 
 .lead{font-size:1.16rem;line-height:1.7}
 .sub{margin-bottom:2.2em}
@@ -223,7 +265,7 @@ p:last-child{margin-bottom:0}
 }
 .founder .split-media{max-width:340px;margin-inline:auto}
 /* second leader reads image-right so the two blocks alternate */
-.founder-alt{margin-top:3.4em}
+.founder-alt{margin-top:var(--flow-section)}
 .founder-alt .split-text{order:1}
 .founder-alt .split-media{order:2}
 .role{
@@ -231,12 +273,12 @@ p:last-child{margin-bottom:0}
   text-transform:uppercase;color:var(--orange-deep);margin:0 0 .5em;
 }
 .role + h3{margin-top:0}
-.founder{margin-top:3.4em;align-items:start}
+.founder{align-items:start}
 
 /* ── Steps ────────────────────────────────────────── */
 
 .steps{
-  list-style:none;margin:2.6em 0 0;padding:0;
+  list-style:none;margin-block:0;padding:0;
   display:grid;grid-template-columns:repeat(3,1fr);gap:24px;counter-reset:s;
 }
 .steps li{
@@ -252,12 +294,12 @@ p:last-child{margin-bottom:0}
 .steps p{font-size:.97rem;margin:0}
 
 .promise{
-  margin-top:2.6em;padding:30px 34px;border-left:4px solid var(--teal);
+  padding:30px 34px;border-left:4px solid var(--teal);
   background:var(--white);border-radius:0 var(--radius) var(--radius) 0;box-shadow:var(--shadow);
 }
 
 .cta-band{
-  margin-top:2.4em;padding:38px 40px;border-radius:var(--radius);
+  padding:38px 40px;border-radius:var(--radius);
   background:linear-gradient(135deg,var(--teal-deep),var(--teal));
   color:#fff;display:flex;align-items:center;gap:32px;flex-wrap:wrap;
   box-shadow:var(--shadow-lg);
@@ -278,7 +320,7 @@ p:last-child{margin-bottom:0}
 .card h3{color:var(--teal-deep)}
 
 .callout{
-  margin-top:26px;padding:34px 36px;border-radius:var(--radius);
+  padding:34px 36px;border-radius:var(--radius);
   background:#fdf3ee;border:1px solid rgba(211,88,44,.22);
 }
 .callout h3{color:var(--orange-deep)}
@@ -286,7 +328,7 @@ p:last-child{margin-bottom:0}
 /* ── Mission quote ────────────────────────────────── */
 
 .mission{
-  margin:2.2em auto 0;max-width:880px;padding:40px 44px;
+  margin-inline:auto;max-width:880px;padding:40px 44px;
   background:var(--white);border-radius:var(--radius);
   border-top:4px solid var(--teal);box-shadow:var(--shadow-lg);
 }
@@ -295,13 +337,13 @@ p:last-child{margin-bottom:0}
   line-height:1.55;color:var(--ink);margin:0;
 }
 .values{
-  margin-top:3.4em;padding:34px 36px;background:var(--white);
+  padding:34px 36px;background:var(--white);
   border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow);
 }
 
 /* ── Research ─────────────────────────────────────── */
 
-.studies{margin-top:2.6em;display:grid;gap:16px}
+.studies{display:grid;gap:16px}
 .study{
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
   box-shadow:var(--shadow);overflow:hidden;
@@ -341,9 +383,9 @@ p:last-child{margin-bottom:0}
 
 /* ── Landing: reference list ──────────────────────── */
 
-.research-cta{margin:2.2em 0 0}
+.research-cta{margin:var(--flow-block) 0 0}
 .refs{
-  margin-top:2.8em;padding:32px 36px;background:var(--white);
+  padding:32px 36px;background:var(--white);
   border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);
 }
 .refs-title{
@@ -357,7 +399,7 @@ p:last-child{margin-bottom:0}
 /* ── Values ───────────────────────────────────────── */
 
 .value-grid{
-  list-style:none;margin:2.2em 0 0;padding:0;
+  list-style:none;margin-block:0;padding:0;
   display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
 }
 .value{
