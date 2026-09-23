@@ -12,7 +12,8 @@ markup are new.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The one-page site: hero, get started, about, research |
+| `index.html` | The one-page site: hero, get started, about, research references |
+| `research.html` | The four studies in full, one `h2` each, with a sticky table of contents |
 | `blog.html` | Blog listing |
 | `styles.css` | All styling |
 | `script.js` | Nav, accordion, scroll behavior |
@@ -26,8 +27,10 @@ Open `index.html` or run `python3 -m http.server 8000` and go to http://localhos
 - Type is Fraunces over Inter. Headings sit tight to the text they introduce.
 - Original palette kept: `#7EBEC5` teal, `#d4edf4` pale blue, `#d3582c` burnt orange.
 - Full-bleed hero video with the still frame as poster, so it never shows blank.
-- The research section is four collapsible cards, one open at a time, instead of the
-  wall of text it used to be.
+- The research lives on its own page. The landing page keeps the intro, a "Learn More
+  About The Research" button and the reference list; the full write-ups are on `research.html`.
+- "What We Do" and "Our Values" are split into two paragraphs each instead of one wall of text,
+  and the three values carry an icon and a one-line gloss.
 - Mobile nav, scroll-spy highlighting, back-to-top and reveal-on-scroll all work.
 - Two generic stock images with "OUR CORE VALUES" and "WELCOME" baked into them were
   cut. The real photographs of Jackson and the volunteer team carry those sections.
