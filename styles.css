@@ -222,6 +222,15 @@ p:last-child{margin-bottom:0}
   font-family:var(--head);color:var(--ink);font-size:1.02rem;
 }
 .founder .split-media{max-width:340px;margin-inline:auto}
+/* second leader reads image-right so the two blocks alternate */
+.founder-alt{margin-top:3.4em}
+.founder-alt .split-text{order:1}
+.founder-alt .split-media{order:2}
+.role{
+  font-family:var(--sans);font-size:.74rem;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--orange-deep);margin:0 0 .5em;
+}
+.role + h3{margin-top:0}
 .founder{margin-top:3.4em;align-items:start}
 
 /* ── Steps ────────────────────────────────────────── */
@@ -439,6 +448,8 @@ p:last-child{margin-bottom:0}
   .steps{grid-template-columns:1fr}
   .split{grid-template-columns:1fr;gap:34px}
   .split-reverse .split-text,.split-reverse .split-media{order:initial}
+  .founder-alt .split-text{order:2}
+  .founder-alt .split-media{order:1}
   .founder .split-media{max-width:300px}
   .footer-inner{grid-template-columns:1fr;gap:34px}
 }

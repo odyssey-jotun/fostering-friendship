@@ -5,8 +5,10 @@
 The site for Fostering Friendships, a 501c3 nonprofit founded by Jackson Jones in Little
 Rock, Arkansas, helping foster children build real peer relationships.
 
-Every word of copy and every photograph is from the original site. The design and the
-markup are new.
+The copy and photographs come from the original site, with two deliberate exceptions:
+Jackson's bio is updated (he is now a freshman at UCLA, and the project dates to his junior
+year of high school), and Keene Jones has been added as Acting President with a new bio and
+portrait. Everything else is the original wording. The design and the markup are new.
 
 ## What is here
 
