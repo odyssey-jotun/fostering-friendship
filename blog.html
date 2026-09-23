@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog | Fostering Friendships</title>
+<meta name="description" content="Updates from Fostering Friendships, a 501c3 non-profit building peer connections with foster children.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="assets/favicon.png" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .page-head{background:var(--pale-soft);padding-block:clamp(56px,7vw,88px);text-align:center}
+  .posts{display:grid;gap:22px;margin-top:2.4em}
+  .post{
+    background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
+    padding:34px 36px;box-shadow:var(--shadow);
+  }
+  .post h2{font-size:clamp(1.35rem,2.4vw,1.75rem);margin:0 0 .35em}
+  .post .meta{
+    font-size:.84rem;color:var(--teal-deep);font-weight:600;
+    letter-spacing:.04em;margin:0 0 1em;
+  }
+  .tag{
+    display:inline-block;background:var(--pale-soft);color:var(--teal-deep);
+    border-radius:999px;padding:3px 11px;font-size:.76rem;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;margin-left:8px;
+  }
+  .topics{margin-top:3em;padding-top:2em;border-top:1px solid var(--line)}
+  .topics h3{margin-bottom:.5em}
+  .topic-list{list-style:none;margin:0;padding:0;display:flex;gap:10px;flex-wrap:wrap}
+  .topic-list li{
+    background:var(--pale-soft);border-radius:999px;padding:7px 16px;
+    font-size:.9rem;font-weight:500;color:var(--teal-deep);
+  }
+  @media (max-width:620px){ .post{padding:26px 22px} }
+</style>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="brand" href="index.html">
+      <img src="assets/Logo-1.png" alt="Fostering Friendships" width="450" height="100">
+    </a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="index.html">Home</a>
+      <a href="index.html#get-started">Get Started</a>
+      <a href="index.html#about">About Us</a>
+      <a href="index.html#research">The Research</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a class="nav-cta" href="assets/fostering-friendship-guide.pdf" download>Download The Guide</a>
+    </nav>
+    <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="eyebrow">Fostering Friendships</p>
+    <h1 style="font-size:clamp(2.1rem,4.5vw,3.1rem)">Welcome To Our Blog</h1>
+    <p class="lead" style="max-width:560px;margin-inline:auto">Keep up on what&rsquo;s going on.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap narrow">
+
+    <div class="posts">
+
+      <article class="post">
+        <h2>Fostering Friendships Featured on KARK4/NBC News</h2>
+        <p class="meta">by Jackson Jones &nbsp;|&nbsp; Aug 18, 2024 <span class="tag">Uncategorized</span></p>
+        <p>We are so grateful for the opportunity to be with the children at the Centers for Youth and Family! Big thanks to reporter Samantha Boyd, who works with Fox 16 and KARK4, for highlighting our volunteers and work with the Centers. On August 14th, 7 of our volunteers,&hellip;</p>
+      </article>
+
+      <article class="post">
+        <h2>Welcome To Our Blog</h2>
+        <p class="meta">by Jackson Jones &nbsp;|&nbsp; Aug 13, 2024 <span class="tag">General</span></p>
+        <p>Thank you for visiting our blog. We will be using this blog to update this website from time to time.</p>
+      </article>
+
+    </div>
+
+    <div class="topics">
+      <h3>Blog Topics</h3>
+      <ul class="topic-list">
+        <li>General</li>
+        <li>Uncategorized</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div>
+      <img class="footer-logo" src="assets/Logo-1.png" alt="Fostering Friendships" width="450" height="100">
+      <h3>About</h3>
+      <p>This website is dedicated to building a community which assists foster children</p>
+    </div>
+    <div>
+      <h3>Download The Guide</h3>
+      <p><a href="assets/fostering-friendship-guide.pdf" download>Download Our Guide</a></p>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <p>&copy; 2026</p>
+  </div>
+</footer>
+
+<a class="to-top" id="toTop" href="#main" aria-label="Back to top"></a>
+
+<script src="script.js"></script>
+</body>
+</html>
